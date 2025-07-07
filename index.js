@@ -6,12 +6,10 @@ const botonAnterior = document.getElementById('botonAnterior');
 const botonSiguiente = document.getElementById('botonSiguiente');
 const informacionPagina = document.getElementById('informacionPagina');
 
-// Estado global
 let paginaActual = 1;
 let totalPaginas = 1;
 let filtrosActuales = {};
 
-// Lista los personajes en tarjetas
 function listarPersonajes(personajes = []) {
   contenedorResultados.innerHTML = '';
   
@@ -38,7 +36,6 @@ function listarPersonajes(personajes = []) {
   });
 }
 
-// Actualiza los controles de paginación
 function actualizarPaginacion(informacion) {
   paginaActual = informacion.paginaActual || 1;
   totalPaginas = informacion.paginas || 1;
@@ -48,7 +45,6 @@ function actualizarPaginacion(informacion) {
   botonSiguiente.disabled = paginaActual >= totalPaginas;
 }
 
-// Obtiene personajes de la API (con o sin filtros)
 async function obtenerPersonajes(parametros = {}, pagina = 1) {
   let url = URL_API;
   const parametrosConsulta = { ...parametros, page: pagina };
@@ -82,7 +78,6 @@ async function obtenerPersonajes(parametros = {}, pagina = 1) {
   }
 }
 
-// Obtiene los filtros del formulario
 function obtenerFiltros() {
   return {
     name: document.getElementById('nombre').value.trim(),
@@ -93,7 +88,6 @@ function obtenerFiltros() {
   };
 }
 
-// Limpia filtros vacíos
 function limpiarFiltros(filtros) {
   const filtrosLimpios = {};
   
@@ -106,7 +100,6 @@ function limpiarFiltros(filtros) {
   return filtrosLimpios;
 }
 
-// Evento: Obtener todos los personajes (primera página)
 botonObtenerTodos.addEventListener('click', (evento) => {
   evento.preventDefault();
   
@@ -115,7 +108,6 @@ botonObtenerTodos.addEventListener('click', (evento) => {
   obtenerPersonajes({}, 1);
 });
 
-// Evento: Filtrar personajes
 formularioFiltros.addEventListener('submit', (evento) => {
   evento.preventDefault();
   
@@ -124,7 +116,6 @@ formularioFiltros.addEventListener('submit', (evento) => {
   obtenerPersonajes(filtrosActuales, 1);
 });
 
-// Evento: Página anterior
 botonAnterior.addEventListener('click', () => {
   if (paginaActual > 1) {
     paginaActual--;
@@ -132,7 +123,6 @@ botonAnterior.addEventListener('click', () => {
   }
 });
 
-// Evento: Página siguiente
 botonSiguiente.addEventListener('click', () => {
   if (paginaActual < totalPaginas) {
     paginaActual++;
@@ -140,5 +130,4 @@ botonSiguiente.addEventListener('click', () => {
   }
 });
 
-// Cargar personajes iniciales
 obtenerPersonajes({}, 1);
