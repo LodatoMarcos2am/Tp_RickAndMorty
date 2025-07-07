@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rick y Morty - Personajes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="contenedor">
+    <h1>Rick y Morty - Personajes</h1>
+    
+    <div class="controles">
+      <button id="botonObtenerTodos">Obtener todos los personajes</button>
+      
+      <div class="seccion-filtros">
+        <h3>Filtros de búsqueda</h3>
+        
+        <form id="formularioFiltros">
+          <div class="filtros">
+            <div class="grupo-filtro">
+              <label for="nombre">Nombre:</label>
+              <input type="text" id="nombre" name="name" placeholder="Ej: Rick">
+            </div>
+            
+            <div class="grupo-filtro">
+              <label for="estado">Estado:</label>
+              <select id="estado" name="status">
+                <option value="">Todos</option>
+                <option value="Alive">Vivo</option>
+                <option value="Dead">Muerto</option>
+                <option value="unknown">Desconocido</option>
+              </select>
+            </div>
+            
+            <div class="grupo-filtro">
+              <label for="especie">Especie:</label>
+              <input type="text" id="especie" name="species" placeholder="Ej: Human">
+            </div>
+            
+            <div class="grupo-filtro">
+              <label for="tipo">Tipo:</label>
+              <input type="text" id="tipo" name="type" placeholder="Ej: Human">
+            </div>
+            
+            <div class="grupo-filtro">
+              <label for="genero">Género:</label>
+              <select id="genero" name="gender">
+                <option value="">Todos</option>
+                <option value="Female">Femenino</option>
+                <option value="Male">Masculino</option>
+                <option value="Genderless">Sin género</option>
+                <option value="unknown">Desconocido</option>
+              </select>
+            </div>
+            
+            <button type="submit">Filtrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="contenedorResultados" class="resultados"></div>
+    
+    <div id="paginacion" class="paginacion">
+      <button id="botonAnterior" disabled>Anterior</button>
+      <span id="informacionPagina">Página 1</span>
+      <button id="botonSiguiente">Siguiente</button>
+    </div>
+  </div>
+  
+  <script src="index.js"></script>
+</body>
+</html>
